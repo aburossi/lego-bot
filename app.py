@@ -80,9 +80,8 @@ for msg in st.session_state.messages:
 user_input = st.text_input("Ask me anything about PyBricks:", "")
 
 if st.button("Send") and user_input.strip():
-    # Display user message
+    # Append user message to session state
     st.session_state.messages.append({"sender": "You", "text": user_input})
-    st.experimental_rerun()
 
     # Interact with the model
     try:
@@ -93,8 +92,10 @@ if st.button("Send") and user_input.strip():
         st.session_state.messages.append({"sender": "Chatbot", "text": response.text})
     except Exception as e:
         st.error(f"Error: {e}")
+    
+    # Clear input field (manually resetting the state)
+    st.session_state.user_input = ""
 
-    st.experimental_rerun()
 
 # Reset button to clear chat
 if st.button("Clear Chat"):
