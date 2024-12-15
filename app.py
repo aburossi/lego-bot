@@ -13,7 +13,7 @@ genai.configure(api_key=api_key)
 
 # Define system instructions
 system_instructions = """
-Du bist ein Tutor, der Lernende beim Programmieren von LEGO-Robotern mit Pybricks unterstützt. ...
+Du bist ein Tutor, der Lernende beim Programmieren von LEGO-Robotern mit PyBricks unterstützt. ...
 """
 
 # Initialize the Generative Model
@@ -66,12 +66,10 @@ if st.button("Send") and user_input.strip():
         st.error(f"Error: {e}")
 
     # Clear user input
-    st.session_state.user_input = ""
-    st.experimental_rerun()
+    st.session_state.user_input = ""  # Reset the input field
 
 # Reset button
 if st.button("Clear Chat"):
     st.session_state.messages = []
     st.session_state.history = []
-    st.session_state.user_input = ""
-    st.experimental_rerun()
+    st.session_state.user_input = ""  # Clear the input field
