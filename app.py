@@ -100,7 +100,7 @@ if st.button("Send") and user_input.strip():
     st.session_state.user_input = ""
 
     # Force a re-render to show the new message
-    st.experimental_rerun()
+    st.rerun()
 
 
 # --- 6. Reset Button ---
