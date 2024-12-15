@@ -52,7 +52,7 @@ user_input = st.text_input("Ask me anything about PyBricks:", st.session_state.u
 if st.button("Send") and user_input.strip():
     # Append user message in the correct format
     st.session_state.messages.append({"sender": "You", "text": user_input})
-    st.session_state.history.append({"author": "User", "parts": [user_input]})
+    st.session_state.history.append({"parts": [user_input]})  # Gemini API format
 
     try:
         # Get response from the model
@@ -60,7 +60,7 @@ if st.button("Send") and user_input.strip():
         response = chat_session.send_message(user_input)
 
         # Append model response in the correct format
-        st.session_state.history.append({"author": "Model", "parts": [response.text]})
+        st.session_state.history.append({"parts": [response.text]})  # Gemini API format
         st.session_state.messages.append({"sender": "Chatbot", "text": response.text})
     except Exception as e:
         st.error(f"Error: {e}")
